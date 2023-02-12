@@ -1,3 +1,4 @@
+log.level: debug
 input {
   mongodb {
     uri => "mongodb+srv://db_dev:a5hCifm6FmhFZjt@cluster-test.ra2jt.mongodb.net/test-log?retryWrites=true&w=majority"
@@ -11,8 +12,7 @@ input {
 
 output {
   elasticsearch {
-    action => "index"
-    index => "collection_index_data_mongo"
-    hosts => "elasticsearch:9200"
+    hosts => ["localhost:9200"]
   }
 }
+

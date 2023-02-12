@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-const mongoUri = "mongodb+srv://db_dev:a5hCifm6FmhFZjt@cluster-test.ra2jt.mongodb.net/test-log?retryWrites=true&w=majority";
+const mongoUri = "mongodb://localhost:27017/test-lo?retryWrites=true&w=majorityg";
+// const mongoUri = "mongodb+srv://db_dev:a5hCifm6FmhFZjt@cluster-test.ra2jt.mongodb.net/test-log?retryWrites=true&w=majority";
 
 app.use(express.json());
 
@@ -27,6 +28,7 @@ const logSchema = new mongoose.Schema({
 const Log = mongoose.model('Log', logSchema);
 
 app.post('/logs', async (req, res) => {
+  console.log("req: ", req.body);
   try {
     const log = new Log(req.body);
     await log.save();

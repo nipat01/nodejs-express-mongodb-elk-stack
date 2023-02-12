@@ -1,0 +1,20 @@
+input {
+  mongodb {
+    uri => "mongodb://db_dev:a5hCifm6FmhFZjt@cluster-test.ra2jt.mongodb.net:27017/test-log"
+    collection => "logs"
+    host => "cluster-test.ra2jt.mongodb.net"
+    port => 27017
+    database => "test-log"
+    user => "db_dev"
+    password => "a5hCifm6FmhFZjt"
+  }
+}
+
+output {
+  elasticsearch {
+    action => "index"
+    index => "collection_index_data_mongo"
+    hosts => ["localhost:9200"]
+    # index => "logstash-%{+YYYY.MM.dd}"
+  }
+}
